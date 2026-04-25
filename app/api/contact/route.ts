@@ -18,7 +18,8 @@ export async function POST(req: Request) {
     email,
     phone: phone || "",
     message,
-    source: "homesweetchloe.ca/contact",
+    // TODO: replace with actual production domain
+    source: `${process.env.NEXT_PUBLIC_SITE_URL ?? "example.ca"}/contact`,
   };
 
   if (webhookUrl) {

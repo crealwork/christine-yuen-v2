@@ -5,7 +5,7 @@ out/
 .env
 *.log
 .DS_Store
-.vercel
+.vercel/
 next-env.d.ts
 tsconfig.tsbuildinfo
 .superpowers/
@@ -13,5 +13,3 @@ tsconfig.tsbuildinfo
 .image-gen-log.json
 .reroll-list
 scripts/headshot-source.jpg
-
-.vercel

@@ -96,7 +96,7 @@ export default async function ContactPage({
                         href="tel:{{REALTOR_PHONE_E164}}"
                         className="text-lg hover:text-[var(--color-accent-700)]"
                       >
-                        {{REALTOR_PHONE}}
+                        {"{{REALTOR_PHONE}}"}
                       </a>
                     </dd>
                   </div>
@@ -112,7 +112,7 @@ export default async function ContactPage({
                         rel="noreferrer"
                         className="text-lg hover:text-[var(--color-accent-700)]"
                       >
-                        @{{INSTAGRAM_HANDLE}}
+                        {"@{{INSTAGRAM_HANDLE}}"}
                       </a>
                     </dd>
                   </div>
@@ -134,7 +134,7 @@ export default async function ContactPage({
                       href="tel:{{BROKERAGE_PHONE_E164}}"
                       className="hover:text-[var(--color-accent-700)]"
                     >
-                      {{BROKERAGE_PHONE}}
+                      {"{{BROKERAGE_PHONE}}"}
                     </a>
                   </div>
                 </div>

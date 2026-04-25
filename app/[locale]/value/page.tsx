@@ -72,7 +72,7 @@ export default async function ValuePage({
             style={{ fontFamily: "var(--font-display)", color: "var(--color-graphite)" }}
           >
             {/* TODO: replace with brand-specific subtitle referencing the realtor's name and market */}
-            A two-minute estimate based on {{SERVICE_AREA}} comparables, plus a personal review from {{REALTOR_FIRST_NAME}} within 24 hours.
+            {"A two-minute estimate based on {{SERVICE_AREA}} comparables, plus a personal review from {{REALTOR_FIRST_NAME}} within 24 hours."}
           </p>
         </div>
       </section>

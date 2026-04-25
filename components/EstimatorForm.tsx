@@ -155,9 +155,9 @@ export default function EstimatorForm() {
           >
             <option value="" disabled>Choose…</option>
             {/* TODO: replace with actual neighborhood options matching PRICE_PER_SQFT keys above */}
-            <option value="neighborhood-1">{{NEIGHBORHOOD_1_LABEL}}</option>
-            <option value="neighborhood-2">{{NEIGHBORHOOD_2_LABEL}}</option>
-            <option value="neighborhood-3">{{NEIGHBORHOOD_3_LABEL}}</option>
+            <option value="neighborhood-1">{"{{NEIGHBORHOOD_1_LABEL}}"}</option>
+            <option value="neighborhood-2">{"{{NEIGHBORHOOD_2_LABEL}}"}</option>
+            <option value="neighborhood-3">{"{{NEIGHBORHOOD_3_LABEL}}"}</option>
           </select>
         </Field>
 
@@ -236,7 +236,7 @@ export default function EstimatorForm() {
           </p>
         )}
         <p className="mt-4 text-xs text-[var(--color-graphite)] max-w-md">
-          Your details go to Chloe directly. No newsletter, no third-party data sales.
+          Your details go to your realtor directly. No newsletter, no third-party data sales.
         </p>
       </div>
     </form>
