@@ -1,0 +1,104 @@
+{
+  "_comment": "Image generation prompts for gpt-image-2. Customize stylePreset to match brand aesthetic, then define 8-15 image entries. Run: npm run gen-images. See PLAYBOOK.md for known gpt-image-2 quirks (org verification gate, edit endpoint, size constraints, transient 500s).",
+  "_workflow": "1) Fill in stylePreset with 5-7 brand-specific sentences (colors, lens, mood). 2) Add image entries. 3) Place headshot JPG at scripts/headshot-source.jpg. 4) npm run gen-images. 5) Preview at /en/review (dev only). 6) Reroll failures with: npm run gen-images -- --only slug1,slug2 --force",
+  "stylePreset": "TODO: 5-7 sentence brand-specific style preset. Example: 'Editorial photograph, magazine quality. [BRAND PALETTE] color palette — [COLOR_1 hex], [COLOR_2 hex], [COLOR_3 hex]. [LIGHT CHARACTER — e.g. soft natural light, golden hour]. Subtle film grain. [COMPOSITION STYLE — e.g. negative space dominant, rule of thirds]. Minimal — no people unless specified, no clutter, no text overlay. [LENS CHARACTER — e.g. 35mm or 50mm, Portra 400-style emulsion]. No HDR, no sharpening.'",
+  "images": [
+    {
+      "slug": "hero-light",
+      "_comment": "Hero section background — wide landscape format. Light, airy, no people.",
+      "mode": "generate",
+      "prompt": "TODO: hero prompt. Example: 'soft afternoon sunlight through sheer linen curtain onto pale plaster wall, 50mm, medium DoF, no furniture'",
+      "size": "1536x1024",
+      "quality": "high"
+    },
+    {
+      "slug": "arch-break",
+      "_comment": "Full-width section break image. Abstract architectural detail.",
+      "mode": "generate",
+      "prompt": "TODO: section break prompt. Example: 'curved plaster archway interior, warm palette, golden hour, 35mm, no people'",
+      "size": "1536x1024",
+      "quality": "high"
+    },
+    {
+      "slug": "object-detail-1",
+      "_comment": "Macro object detail — doorknob, key, hardware, etc. Square format.",
+      "mode": "generate",
+      "prompt": "TODO: object macro prompt. Example: 'brushed brass doorknob on pale door, soft natural light, 85mm macro, shallow DoF'",
+      "size": "1024x1024",
+      "quality": "medium"
+    },
+    {
+      "slug": "neighborhood-1",
+      "_comment": "First service area neighborhood. Square format. Abstract, no faces.",
+      "mode": "generate",
+      "prompt": "TODO: neighborhood prompt. Example: 'abstract architectural detail of [CITY/NEIGHBORHOOD] residential, no faces, dawn light, telephoto compression'",
+      "size": "1024x1024",
+      "quality": "medium"
+    },
+    {
+      "slug": "neighborhood-2",
+      "_comment": "Second service area neighborhood. Square format. Abstract, no faces.",
+      "mode": "generate",
+      "prompt": "TODO: neighborhood prompt. Example: 'abstract architectural detail of [CITY/NEIGHBORHOOD] residential, dusk, warm sky, no faces, telephoto'",
+      "size": "1024x1024",
+      "quality": "medium"
+    },
+    {
+      "slug": "neighborhood-3",
+      "_comment": "Third service area neighborhood. Square format. Abstract, no faces.",
+      "mode": "generate",
+      "prompt": "TODO: neighborhood prompt. Example: 'abstract [CITY/NEIGHBORHOOD] streetscape detail, morning fog, no faces, telephoto, muted color'",
+      "size": "1024x1024",
+      "quality": "medium"
+    },
+    {
+      "slug": "neighborhood-4",
+      "_comment": "Fourth service area neighborhood. Square format. Abstract, no faces.",
+      "mode": "generate",
+      "prompt": "TODO: neighborhood prompt. Example: 'abstract [CITY/NEIGHBORHOOD] condo facade detail, late afternoon light, soft focus background, no faces'",
+      "size": "1024x1024",
+      "quality": "medium"
+    },
+    {
+      "slug": "realtor-portrait-bw",
+      "_comment": "KNOWN ISSUE: gpt-image-2 edit endpoint is legacy-locked to dall-e-2 (returns 400). Workaround: use headshot-source.jpg directly in <img> with CSS filter: grayscale(1). See PLAYBOOK.md. This entry is kept for reference but will fail at runtime.",
+      "mode": "edit",
+      "inputImage": "scripts/headshot-source.jpg",
+      "prompt": "convert to warm B&W editorial portrait, preserve facial detail, soft Portra 400 emulation, magazine cover quality",
+      "size": "1024x1536",
+      "quality": "high"
+    },
+    {
+      "slug": "presale-tower",
+      "_comment": "Presales page hero. Construction or architectural detail. Wide format.",
+      "mode": "generate",
+      "prompt": "TODO: presale tower prompt. Example: 'out-of-focus high-rise condo tower under construction at dusk, warm-cool gradient sky, no construction workers visible'",
+      "size": "1536x1024",
+      "quality": "high"
+    },
+    {
+      "slug": "presale-detail-maquette",
+      "_comment": "Presales page collage item. Architectural model or detail. Square.",
+      "mode": "generate",
+      "prompt": "TODO: maquette or architectural detail prompt. Example: 'miniature architectural maquette of residential tower on wooden table, soft studio light, no people'",
+      "size": "1024x1024",
+      "quality": "medium"
+    },
+    {
+      "slug": "presale-detail-scaffolding",
+      "_comment": "Presales page collage item. Abstract construction geometry. Square.",
+      "mode": "generate",
+      "prompt": "TODO: scaffolding or construction silhouette prompt. Example: 'abstract construction scaffolding silhouette against pale evening sky, geometric pattern, golden hour, no workers'",
+      "size": "1024x1024",
+      "quality": "medium"
+    },
+    {
+      "slug": "ambient-footer",
+      "_comment": "Footer background strip. Single light study, deep negative space.",
+      "mode": "generate",
+      "prompt": "TODO: ambient footer prompt. Example: 'single light study — late afternoon sun on corner of pale plaster room, deep negative space, no furniture, warm tone'",
+      "size": "1536x1024",
+      "quality": "medium"
+    }
+  ]
+}

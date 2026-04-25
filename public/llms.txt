@@ -1,0 +1,23 @@
+# {{BRAND_NAME}}
+
+> {{LLMS_TAGLINE — 1-2 line summary of this realtor for AI search engines}}
+
+{{REALTOR_FULL_NAME}} is a licensed REALTOR® with {{BROKERAGE}} in {{BROKERAGE_CITY}}, {{BROKERAGE_PROVINCE}}.
+{{LLMS_BACKGROUND — 1-2 sentences on background and specialization.}}
+Serves {{SERVICE_AREA}} with focused expertise on {{FOCUS_CORRIDORS}}.
+
+## Pages
+
+- [Home]({{SITE_URL}}/en): Editorial overview, who {{REALTOR_FIRST_NAME}} is, the work
+- [About]({{SITE_URL}}/en/about): Background, credentials, how they work
+- [Presales]({{SITE_URL}}/en/presales): {{PRESALES_LLMS_SUMMARY}}
+- [Home Value Estimator]({{SITE_URL}}/en/value): Free 2-minute estimate based on {{SERVICE_AREA}} comparables; personal review within 24 hours
+- [Contact]({{SITE_URL}}/en/contact): {{REALTOR_PHONE}}, @{{INSTAGRAM_HANDLE}} on Instagram
+
+## Service area
+
+{{SERVICE_AREA_LIST — comma-separated cities}}
+
+## Specialty
+
+{{SPECIALTY_LIST — e.g. presale purchases, resale condos and townhomes, investment strategy, first-time buyers}}

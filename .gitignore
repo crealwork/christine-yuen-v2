@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+.env*.local
+.env
+*.log
+.DS_Store
+.vercel
+next-env.d.ts
+tsconfig.tsbuildinfo
+.superpowers/
+.firecrawl/
+.image-gen-log.json
+.reroll-list
+scripts/headshot-source.jpg
+
+.vercel

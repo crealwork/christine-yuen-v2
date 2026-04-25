@@ -1,0 +1,242 @@
+# DESIGN.md — [Brand Name]
+
+<!-- Copy this file to DESIGN.md and fill in every section before starting customization.
+     The more specific you are here, the less iteration the agent needs.
+     Sections marked [REQUIRED] must be filled before running gen-images or building. -->
+
+---
+
+## Brand Identity [REQUIRED]
+
+**Brand name:** <!-- e.g. Home Sweet Chloe, The Jane Smith Group, Northshore Living -->
+**Realtor full name:** <!-- e.g. Jane Smith -->
+**Realtor first name:** <!-- e.g. Jane -->
+**Brokerage:** <!-- e.g. RE/MAX City Realty -->
+**Tagline:** <!-- 1 short phrase — e.g. "A field guide to the Lower Mainland presale market" -->
+**Positioning:** <!-- 1-2 sentences: what makes this realtor different. Specific > generic. -->
+**Languages:** <!-- e.g. English only / English · Korean / English · Mandarin -->
+**Service area:** <!-- e.g. Metro Vancouver / Greater Toronto / etc. -->
+**Focus corridors:** <!-- neighborhoods or submarkets where they're most active -->
+**Domain:** <!-- e.g. brandname.ca -->
+**Aesthetic direction:** <!-- pick one: editorial magazine / quiet luxury / boutique real estate / warm modernist / urban minimal -->
+**Concept anchor:** <!-- the idea that holds the "magazine" together — e.g. "Field Notes", "The Notebook", "The Atlas", "Studio", "The Index" -->
+
+---
+
+## About Copy [REQUIRED]
+
+**Bio (1-2 sentences for hero/sidebar):**
+<!-- Clean, first-person or third-person. Mention designation + brokerage. -->
+
+**Essay paragraph 1 (3-4 sentences for About page):**
+<!-- Background story. How did they get here? What's the credential that matters? -->
+
+**Essay paragraph 2 (2-3 sentences):**
+<!-- How background benefits the client. End with the core promise. -->
+
+**Pull quote:**
+<!-- One memorable line about their approach. Gets displayed large on-page. -->
+
+**Background table:**
+- Previous experience: <!-- e.g. MLA Canada · Key Marketing, or "10 years in residential new development" -->
+- Languages: <!-- e.g. English · Korean -->
+- Service area: <!-- e.g. Lower Mainland, BC -->
+
+---
+
+## Logo Files
+
+<!-- Place logo files in public/logo/. Favicon set is pre-included (replace with brand favicons). -->
+
+| File | Usage |
+|------|-------|
+| `public/logo/favicon.ico` | Browser tab (replace with brand favicon) |
+| `public/logo/favicon-32.png` | 32×32 favicon |
+| `public/logo/favicon-192.png` | PWA / Apple touch icon |
+| `public/logo/brokerage-logo.png` | Footer brokerage logo (add if available) |
+
+**Logo notes:**
+<!-- Any rules on logo usage from brokerage, or note if no wordmark SVG is needed
+     (brand name renders as Fraunces text directly — no SVG required). -->
+
+---
+
+## Color Palette [REQUIRED]
+
+<!-- 4-6 colors. Must include: ink (darkest text), accent (brand pop), canvas (off-white bg), line (borders). -->
+
+| Role | Name | Hex | RGB |
+|------|------|-----|-----|
+| Ink (darkest text) | <!-- e.g. Charcoal --> | `#______` | rgb(__, __, __) |
+| Accent (brand pop) | <!-- e.g. Pale Lilac --> | `#______` | rgb(__, __, __) |
+| Accent dark (hover/tint) | <!-- e.g. Purple --> | `#______` | rgb(__, __, __) |
+| Canvas (off-white bg) | <!-- e.g. Cream --> | `#______` | rgb(__, __, __) |
+| Line (borders) | <!-- e.g. Light grey --> | `#______` | rgb(__, __, __) |
+| Graphite (secondary text) | <!-- e.g. Mid grey --> | `#______` | rgb(__, __, __) |
+
+---
+
+## CSS Custom Properties
+
+<!-- Copy these into app/globals.css @theme block and :root block, replacing the default lilac palette. -->
+
+```css
+--color-ink: #______;
+--color-accent: #______;
+--color-accent-50: #______;   /* very light tint */
+--color-accent-100: #______;
+--color-accent-300: #______;
+--color-accent-500: #______;
+--color-accent-700: #______;  /* hover / dark accent */
+--color-charcoal: #______;
+--color-graphite: #______;
+--color-line: #______;
+--color-canvas: #______;
+```
+
+---
+
+## Typography [REQUIRED]
+
+**Display font:** <!-- e.g. Fraunces (already loaded) / Playfair Display / Cormorant Garamond -->
+**Sans font:** <!-- e.g. Inter (already loaded) / DM Sans / Outfit -->
+**Korean font (if applicable):** <!-- Pretendard is already loaded via CDN for ko locale. Keep or remove. -->
+
+**Font variation settings:**
+- Hero headline: `font-variation-settings: "opsz" 144` (high contrast)
+- H2: `font-variation-settings: "opsz" 72`
+- H3: `font-variation-settings: "opsz" 36`
+- Pull quote: `font-variation-settings: "opsz" 48`
+
+<!-- If using a non-variable font, remove font-variation-settings from type classes in globals.css. -->
+
+---
+
+## UI Components
+
+### Buttons
+- `btn-primary`: accent fill → hover = accent-500
+- `btn-secondary`: ink fill → hover = accent fill
+- `btn-ghost`: transparent, ink border → hover = ink fill
+
+<!-- Update button colors in globals.css if accent palette changes. -->
+
+### Language Toggle
+- Shown in header and mobile menu
+- Only render if site is bilingual (EN + KO)
+- If EN only: remove `<LangToggle />` from Header.tsx
+
+### Header
+- Fixed, transparent on load → white/95 + border on scroll
+- Brand name rendered in display font as text (not SVG)
+- Mobile: hamburger → full-screen drawer
+
+### Footer
+- Dark ink background
+- Three columns: brand info / sitemap / brokerage
+- Ambient image strip at top (ambient-footer.jpg)
+- TODO: add brokerage logo PNG if available
+
+### Forms
+- Contact form: 5-field, visible `.field-input` boxes (canvas bg + 1px border)
+- Estimator: multi-fieldset, same `.field-input`
+- Lead privacy line: "No newsletter, no third-party data sales."
+- Success state: italic display font signoff
+
+### Editorial components (components/editorial/)
+- `DropCap` — float-left first letter on essay openers
+- `PullQuote` — italic quote + attribution + hairline
+- `FieldNote` — numbered card (services grid, checklist)
+- `FigureWithCaption` — image + italic below-left caption
+- `TableOfContents` — magazine-style numbered anchor list
+- `EditorialImage` — Next/Image wrapper with framing presets (wide / square / portrait)
+
+### Iconography
+<!-- Currently icon-free (text-based editorial style). Add icons if needed via lucide-react or heroicons. -->
+
+---
+
+## Voice & Imagery
+
+**Tone:** <!-- e.g. editorial magazine / warm expert / direct and grounded -->
+**Things to avoid:** <!-- e.g. hype language, all-caps marketing speak, generic stock photo energy -->
+
+**Image style brief for stylePreset in scripts/prompts.json:**
+<!-- 5-7 sentences. Colors, lens, light, grain, composition, what NOT to include.
+     This is the most important thing to get right for image generation.
+     Example: "Editorial photograph, magazine quality. Warm muted palette: cream (#faf8f5),
+     dusty rose (#e8c4b8), charcoal (#2a2a2a). Soft natural light, golden hour or overcast
+     diffused. Subtle film grain. Negative space dominant. 35mm or 50mm lens, Portra 400
+     emulation. No people, no text overlay, no HDR, no saturation boost." -->
+
+---
+
+## Service Areas
+
+<!-- List all cities/neighborhoods covered. Used in territory.areas (messages/en.json) and llms.txt. -->
+
+Primary:
+-
+-
+-
+
+Secondary:
+-
+-
+
+---
+
+## Contact Information [REQUIRED]
+
+**Realtor cell:** <!-- e.g. 778-874-9797 (also in E.164 format: +17788749797) -->
+**Realtor email:** <!-- e.g. jane@brandname.ca -->
+**Instagram handle:** <!-- e.g. @jane.smith.homes (or N/A) -->
+**Brokerage name:** <!-- e.g. RE/MAX City Realty -->
+**Brokerage address:** <!-- full address -->
+**Brokerage phone:** <!-- e.g. 604-555-1234 -->
+
+---
+
+## Social Channels
+
+| Platform | Handle / URL | Active? |
+|----------|-------------|---------|
+| Instagram | @_______ | Yes / No |
+| Facebook | _______ | Yes / No |
+| LinkedIn | _______ | Yes / No |
+
+---
+
+## Tech Stack
+
+- Next.js 16 App Router (Turbopack dev)
+- React 19
+- TypeScript 5.7 strict
+- Tailwind v4 beta (CSS-first config in globals.css)
+- next-intl 4.9 (path-based EN + optional KO)
+- Vitest + React Testing Library
+- OpenAI SDK 6.x (gpt-image-2 for editorial images)
+- Vercel (hosting) + Cloudflare (DNS)
+
+---
+
+## Compliance
+
+**Regulator:** <!-- e.g. BCFSA (BC), RECO (Ontario), RECA (Alberta) -->
+**License number (optional):** <!-- include if required by brokerage for web display -->
+**Required footer text:** <!-- any mandatory disclosure text from brokerage or regulator -->
+**REALTOR® trademark note:** <!-- REALTOR® must appear as superscript ® per CREA rules -->
+
+---
+
+## Open Questions
+
+<!-- Fill in before starting — these block decisions downstream -->
+
+- [ ] Is Korean translation needed?
+- [ ] Brokerage logo available? (PNG from brokerage marketing)
+- [ ] Does estimator apply to this market? (Luxury = maybe remove /value route)
+- [ ] Any presale specialization or different page focus?
+- [ ] Domain registered and DNS ready?
+- [ ] Cloudflare email routing configured for realtor@brandname.ca?
+- [ ] Google Analytics / PostHog tracking needed?

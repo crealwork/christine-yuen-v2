@@ -1,0 +1,36 @@
+{
+  "name": "realtor-site-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "gen-images": "tsx scripts/generate-images.ts"
+  },
+  "dependencies": {
+    "next": "^16.2.4",
+    "next-intl": "^4.9.1",
+    "openai": "^6.34.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0-beta.8",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^22.10.5",
+    "@types/react": "19.0.2",
+    "@types/react-dom": "19.0.2",
+    "@vitejs/plugin-react": "^6.0.1",
+    "jsdom": "^29.0.2",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^4.0.0-beta.8",
+    "tsx": "^4.21.0",
+    "typescript": "5.7.2",
+    "vitest": "^4.1.5"
+  }
+}

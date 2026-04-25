@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "title": "{{BRAND_NAME}} — {{TAGLINE}} | {{REALTOR_NAME}}, REALTOR®",
+    "description": "{{REALTOR_NAME}}, REALTOR® with {{BROKERAGE}}. {{SHORT_BIO_140_CHARS}}"
+  },
+  "masthead": {
+    "tagline": "{{MASTHEAD_TAGLINE}} · {{SERVICE_AREA}} · {{YEAR}}—"
+  },
+  "nav": {
+    "home": "Home",
+    "presales": "Presales",
+    "value": "Home Value",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "{{BRAND_NAME}}",
+    "headline": "{{HERO_HEADLINE_LINE_1}},\n{{HERO_HEADLINE_LINE_2}}.",
+    "ctaPrimary": "Read the field notes",
+    "ctaSecondary": "Get in touch"
+  },
+  "homeContents": {
+    "heading": "Contents",
+    "entries": [
+      { "num": 1, "label": "{{TOC_ENTRY_1_LABEL}}", "href": "#editor-note" },
+      { "num": 2, "label": "{{TOC_ENTRY_2_LABEL}}", "href": "#field-notes" },
+      { "num": 3, "label": "{{TOC_ENTRY_3_LABEL}}", "href": "#territory" },
+      { "num": 4, "label": "{{TOC_ENTRY_4_LABEL}}", "href": "#pull-quote" },
+      { "num": 5, "label": "{{TOC_ENTRY_5_LABEL}}", "href": "#subscribe" }
+    ]
+  },
+  "editorNote": {
+    "eyebrow": "{{EDITOR_NOTE_EYEBROW}}",
+    "body": "{{EDITOR_NOTE_BODY — 2-3 sentences. Personal opening that establishes credibility. What background does this realtor bring? What do they see differently?}}",
+    "signoff": "— {{REALTOR_FIRST_NAME}}"
+  },
+  "fieldNotes": {
+    "title": "{{FIELD_NOTES_SECTION_TITLE}}",
+    "presale": {
+      "title": "{{SERVICE_1_TITLE}}",
+      "body": "{{SERVICE_1_BODY — 1-2 sentences on what this realtor does for presale clients.}}"
+    },
+    "resale": {
+      "title": "{{SERVICE_2_TITLE}}",
+      "body": "{{SERVICE_2_BODY — 1-2 sentences on resale coverage.}}"
+    },
+    "investment": {
+      "title": "{{SERVICE_3_TITLE}}",
+      "body": "{{SERVICE_3_BODY — investment or niche service.}}"
+    },
+    "firstHome": {
+      "title": "{{SERVICE_4_TITLE}}",
+      "body": "{{SERVICE_4_BODY — first-time buyer or another core service.}}"
+    }
+  },
+  "territory": {
+    "eyebrow": "{{TERRITORY_EYEBROW}}",
+    "title": "{{TERRITORY_HEADLINE}}",
+    "body": "{{TERRITORY_BODY — 1-2 sentences describing the service area geography and any corridors of focus.}}",
+    "areas": ["{{AREA_1}}", "{{AREA_2}}", "{{AREA_3}}", "{{AREA_4}}", "{{AREA_5}}", "{{AREA_6}}"]
+  },
+  "pullQuote": {
+    "text": "{{PULL_QUOTE_TEXT — one memorable line about this realtor's approach or philosophy.}}",
+    "attribution": "{{PULL_QUOTE_ATTRIBUTION}}"
+  },
+  "subscribe": {
+    "eyebrow": "{{SUBSCRIBE_EYEBROW}}",
+    "title": "{{SUBSCRIBE_TITLE — question or invitation to reach out.}}",
+    "body": "{{SUBSCRIBE_BODY — 1 sentence CTA.}}",
+    "button": "Send a note"
+  },
+  "about": {
+    "eyebrow": "About / {{ABOUT_EYEBROW_SUFFIX}}",
+    "title": "{{REALTOR_FULL_NAME}}",
+    "subtitle": "{{REALTOR_TITLE}} · {{BROKERAGE}}",
+    "bio": "{{SHORT_BIO — 1-2 sentences. REALTOR® designation, service area, any bilingual notes.}}",
+    "essayParagraph1": "{{ABOUT_ESSAY_P1 — 3-4 sentences. Career background, credibility, how they got here.}}",
+    "essayCaption": "{{ABOUT_ESSAY_PHOTO_CAPTION — e.g. 'On a site visit in [neighborhood], [year].'}}",
+    "essayParagraph2": "{{ABOUT_ESSAY_P2 — 2-3 sentences. How their background benefits the client. End with the core promise.}}"
+  },
+  "aboutPullQuote": {
+    "text": "{{ABOUT_PULL_QUOTE_TEXT}}",
+    "attribution": "{{ABOUT_PULL_QUOTE_ATTRIBUTION}}"
+  },
+  "background": {
+    "title": "Background",
+    "items": {
+      "brokerage": "{{BROKERAGE}}",
+      "previous": "{{PREVIOUS_EXPERIENCE — e.g. 'Company A · Company B'}}",
+      "languages": "{{LANGUAGES — e.g. 'English · Korean'}}",
+      "area": "{{SERVICE_AREA_LABEL}}"
+    }
+  },
+  "aboutBridge": {
+    "body": "{{ABOUT_BRIDGE_QUESTION}}",
+    "cta": "Get in touch"
+  },
+  "presalesPage": {
+    "eyebrow": "{{PRESALES_EYEBROW}}",
+    "title": "{{PRESALES_HEADLINE}}",
+    "subtitle": "{{PRESALES_SUBTITLE}}",
+    "intro": "{{PRESALES_INTRO — 3-4 sentences explaining what a presale purchase is and what the risks are. Educate without promoting.}}",
+    "checklist": {
+      "title": "{{PRESALES_CHECKLIST_TITLE}}",
+      "items": [
+        { "title": "{{CHECKLIST_1_TITLE}}", "body": "{{CHECKLIST_1_BODY}}" },
+        { "title": "{{CHECKLIST_2_TITLE}}", "body": "{{CHECKLIST_2_BODY}}" },
+        { "title": "{{CHECKLIST_3_TITLE}}", "body": "{{CHECKLIST_3_BODY}}" },
+        { "title": "{{CHECKLIST_4_TITLE}}", "body": "{{CHECKLIST_4_BODY}}" },
+        { "title": "{{CHECKLIST_5_TITLE}}", "body": "{{CHECKLIST_5_BODY}}" },
+        { "title": "{{CHECKLIST_6_TITLE}}", "body": "{{CHECKLIST_6_BODY}}" },
+        { "title": "{{CHECKLIST_7_TITLE}}", "body": "{{CHECKLIST_7_BODY}}" },
+        { "title": "{{CHECKLIST_8_TITLE}}", "body": "{{CHECKLIST_8_BODY}}" }
+      ]
+    }
+  },
+  "presalesMethod": {
+    "title": "{{PRESALES_METHOD_TITLE}}",
+    "body": "{{PRESALES_METHOD_BODY — how compensation works, why advice is honest.}}"
+  },
+  "presalesCta": {
+    "text": "{{PRESALES_CTA_TEXT}}",
+    "button": "{{PRESALES_CTA_BUTTON}}"
+  },
+  "contactPage": {
+    "eyebrow": "Contact",
+    "title": "{{CONTACT_HEADLINE}}",
+    "subtitle": "{{CONTACT_SUBTITLE}}",
+    "form": {
+      "name": "Your name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Tell me what you're looking for",
+      "messagePlaceholder": "{{CONTACT_FORM_PLACEHOLDER — example inquiry matching this realtor's niche}}",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "success": "Thanks — I'll be in touch shortly.",
+      "error": "Something went wrong. Please call or email directly."
+    },
+    "direct": {
+      "title": "Direct contact",
+      "phone": "Cell",
+      "instagram": "Instagram"
+    },
+    "office": {
+      "title": "Brokerage",
+      "name": "{{BROKERAGE}}",
+      "address": "{{BROKERAGE_ADDRESS}}",
+      "phone": "Office"
+    }
+  },
+  "footer": {
+    "tagline": "{{FOOTER_TAGLINE}}",
+    "proudlyWith": "Proudly with",
+    "rights": "All rights reserved.",
+    "compliance": "{{REALTOR_FULL_NAME}}, REALTOR® · {{BROKERAGE}}"
+  }
+}
