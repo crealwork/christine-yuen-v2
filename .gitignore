@@ -13,3 +13,5 @@ tsconfig.tsbuildinfo
 .image-gen-log.json
 .reroll-list
 scripts/headshot-source.jpg
+
+.vercel

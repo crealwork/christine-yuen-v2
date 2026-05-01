@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import type { Locale } from "@/i18n/routing";
@@ -98,7 +99,19 @@ export default async function ProcessPage({
         </div>
       </section>
 
-      <section className="py-20 bg-white border-t border-[var(--color-line)]">
+      <section className="bg-white border-t border-[var(--color-line)]">
+        <div className="relative w-full aspect-[16/7] md:aspect-[16/6] max-h-[420px] overflow-hidden">
+          <Image
+            src="/images/atmosphere/process-interlude.jpg"
+            alt="Editorial flatlay — leather portfolio, fountain pen, jasmine tea"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
         <div className="container-wide max-w-3xl text-center">
           <p
             className="text-2xl md:text-3xl font-light mb-8"

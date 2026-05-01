@@ -1,0 +1,41 @@
+{
+  "stylePreset": "Editorial photography. Spa-Polish hospitality aesthetic — soft natural daylight, champagne gold and cream tones, warm whites, deep charcoal shadows. Minimal, refined, expensive-feeling. Texture-rich, no people, no text overlay, no logos. Pacific Northwest atmospheric.",
+  "images": [
+    {
+      "slug": "richmond-thumbnail",
+      "size": "1024x1024",
+      "quality": "medium",
+      "prompt": "Richmond, BC architectural detail. Modern glass-and-cedar low-rise residential exterior with soft afternoon light reflecting off windows. Subtle Pacific marine atmosphere, distant Steveston-style waterfront feeling, calm and contemporary. Warm gold sunlight angle. No people, no text."
+    },
+    {
+      "slug": "vancouver-east-thumbnail",
+      "size": "1024x1024",
+      "quality": "medium",
+      "prompt": "Vancouver East side residential street vignette. Heritage craftsman house facade with warm wood trim and a small front garden. Soft overcast Pacific Northwest light, mature street trees, grounded neighborhood feel. No people, no text, no signage."
+    },
+    {
+      "slug": "vancouver-west-thumbnail",
+      "size": "1024x1024",
+      "quality": "medium",
+      "prompt": "Vancouver West side architectural close-up. Elegant Tudor-revival house entry framed by mature hydrangeas and a low brick wall. Soft golden-hour light, refined and quiet, established neighborhood character. No people, no text."
+    },
+    {
+      "slug": "currently-hero",
+      "size": "1536x1024",
+      "quality": "high",
+      "prompt": "Wide editorial photo of an empty contemporary living room interior in a Vancouver high-rise. Floor-to-ceiling windows looking out at the North Shore mountains in soft mist. Champagne-gold linen couch, warm white walls, oak floors, a single ceramic vase. Late afternoon golden light. Calm, expensive, lived-in. No people, no text."
+    },
+    {
+      "slug": "process-interlude",
+      "size": "1536x1024",
+      "quality": "high",
+      "prompt": "Overhead flatlay editorial photo. Cream linen tablecloth, an open leather portfolio with blank cream paper, a brass fountain pen, a small ceramic cup of jasmine tea, and a single sprig of olive leaves. Soft window light from upper left, very soft shadows, refined and unhurried. No text, no labels."
+    },
+    {
+      "slug": "atlas-hero",
+      "size": "1536x1024",
+      "quality": "medium",
+      "prompt": "Wide aerial editorial photo of the Lower Mainland coastline at dusk. Glassy still water, distant Vancouver downtown skyline catching warm sunset light, Richmond delta foreground with soft farmland geometry. Warm golden palette over deep teal. Calm, panoramic, no labels, no text, no overlays."
+    }
+  ]
+}

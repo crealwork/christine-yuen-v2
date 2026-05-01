@@ -122,20 +122,21 @@ export default async function AboutPage({
 
       <section className="pb-24 md:pb-32 bg-[var(--color-canvas)]">
         <div className="container-wide max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-4 md:auto-rows-[180px] gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {bento.map((card, i) => (
               <article
                 key={i}
-                className={`${card.span} bg-white border border-[var(--color-line)] p-8 flex flex-col justify-between overflow-hidden`}
+                className={`${card.span} bg-white border border-[var(--color-line)] ${card.image ? "p-0 relative min-h-[420px] md:min-h-0" : "p-8 flex flex-col"}`}
               >
                 {card.image ? (
                   <Image
                     src={card.image}
                     alt="Christine Yuen, REALTOR®"
-                    width={1024}
-                    height={1536}
-                    className="w-full h-full object-cover -m-8"
-                    style={{ width: "calc(100% + 4rem)", height: "calc(100% + 4rem)" }}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover"
+                    style={{ objectPosition: "center 25%" }}
+                    priority
                   />
                 ) : (
                   <>

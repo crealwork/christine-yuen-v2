@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import EstimatorForm from "@/components/EstimatorForm";
@@ -52,6 +53,19 @@ export default async function ValuePage({
           <p className="text-lg md:text-xl" style={{ color: "var(--color-graphite)" }}>
             A personal estimate from Christine, based on Richmond and Vancouver comparables and current market activity. She'll email you within 24 hours.
           </p>
+        </div>
+      </section>
+
+      <section className="bg-[var(--color-canvas)]">
+        <div className="relative w-full aspect-[16/7] md:aspect-[16/6] max-h-[420px] overflow-hidden">
+          <Image
+            src="/images/atmosphere/atlas-hero.jpg"
+            alt="Lower Mainland coastline at dusk"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
         </div>
       </section>
 

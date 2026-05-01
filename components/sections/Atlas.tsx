@@ -1,6 +1,13 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 type Region = "richmond" | "vancouverEast" | "vancouverWest";
+
+const thumbnails: Record<Region, string> = {
+  richmond: "/images/atmosphere/richmond-thumbnail.jpg",
+  vancouverEast: "/images/atmosphere/vancouver-east-thumbnail.jpg",
+  vancouverWest: "/images/atmosphere/vancouver-west-thumbnail.jpg",
+};
 
 export default function Atlas() {
   const t = useTranslations("atlas");
@@ -20,6 +27,15 @@ export default function Atlas() {
             const items = t.raw(`${region}.items`) as string[];
             return (
               <div key={region}>
+                <div className="relative w-full aspect-[4/3] mb-5 overflow-hidden rounded-[8px]">
+                  <Image
+                    src={thumbnails[region]}
+                    alt={t(`${region}.label`)}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
                 <h3 className="text-[20px] font-semibold text-[var(--color-ink)] mb-5 pb-3 border-b border-[var(--color-line)]">
                   {t(`${region}.label`)}
                 </h3>
