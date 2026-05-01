@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import ContactForm from "@/components/ContactForm";
 
-// TODO: replace with actual production domain (set NEXT_PUBLIC_SITE_URL env var)
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.ca";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://christineyuenrealty.ca";
 
 export async function generateMetadata({
   params,
@@ -12,45 +11,17 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const isEn = locale === "en";
   return {
-    // TODO: replace with brand-specific contact page title and description
-    title: isEn
-      ? "Contact {{REALTOR_FIRST_NAME}} — {{SERVICE_AREA}} realtor | {{BRAND_NAME}}"
-      : "{{CONTACT_PAGE_TITLE_KO}}",
-    description: isEn
-      ? "Reach {{REALTOR_FULL_NAME}}, REALTOR® — {{SERVICE_AREA_LIST}}. Call {{REALTOR_PHONE}} or send a message. Most replies within a few hours."
-      : "{{CONTACT_META_DESCRIPTION_KO}}",
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/contact`,
-      languages: {
-        en: `${BASE_URL}/en/contact`,
-        ko: `${BASE_URL}/ko/contact`,
-      },
-    },
+    title: "Contact Christine — Richmond, Vancouver realtor | Christine Yuen, REALTOR®",
+    description:
+      "Reach Christine Yuen, REALTOR® — Richmond, Vancouver East and West. Call 604-808-9918 or send a message. Most replies within a few hours.",
+    alternates: { canonical: `${BASE_URL}/${locale}/contact` },
     openGraph: {
-      // TODO: replace with brand-specific OG title and description
-      title: "Contact {{REALTOR_FIRST_NAME}} — {{SERVICE_AREA}} realtor | {{BRAND_NAME}}",
-      description: "{{CONTACT_OG_DESCRIPTION_EN}}",
+      title: "Contact Christine Yuen, REALTOR®",
+      description: "Richmond, Vancouver East and West. First conversation is no commitment.",
       url: `${BASE_URL}/${locale}/contact`,
       type: "website",
-      images: [
-        {
-          // TODO: replace with actual ambient image (generated via scripts/prompts.json)
-          url: "/images/editorial/ambient-footer.jpg",
-          width: 1536,
-          height: 1024,
-          alt: "{{CONTACT_OG_IMAGE_ALT}}",
-        },
-      ],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Contact {{REALTOR_FIRST_NAME}} — {{SERVICE_AREA}} realtor | {{BRAND_NAME}}",
-      description: "{{CONTACT_OG_DESCRIPTION_EN}}",
-      images: ["/images/editorial/ambient-footer.jpg"],
-    },
-    robots: locale === "ko" ? { index: false, follow: false } : undefined,
   };
 }
 
@@ -67,77 +38,90 @@ export default async function ContactPage({
     <>
       <section className="pt-32 md:pt-40 pb-12 md:pb-16 bg-[var(--color-canvas)]">
         <div className="container-wide max-w-4xl">
-          <p className="eyebrow mb-6">{t("contactPage.eyebrow")}</p>
-          <h1 className="type-hero-headline mb-6">{t("contactPage.title")}</h1>
           <p
-            className="text-xl italic"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-graphite)" }}
+            className="text-sm tracking-[0.2em] uppercase mb-6"
+            style={{ color: "var(--color-graphite)" }}
           >
-            {t("contactPage.subtitle")}
+            {t("contact.eyebrow")}
+          </p>
+          <h1
+            className="text-4xl md:text-6xl font-light mb-6"
+            style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "var(--color-ink)" }}
+          >
+            {t("contact.heading")}
+          </h1>
+          <p
+            className="text-xl"
+            style={{ fontFamily: "var(--font-display)", fontStyle: "italic", color: "var(--color-graphite)" }}
+          >
+            {t("contact.body")}
           </p>
         </div>
       </section>
 
-      <section className="pb-24 md:pb-32 bg-white">
-        <div className="container-wide max-w-6xl">
+      <section className="pb-24 md:pb-32 bg-white border-t border-[var(--color-line)]">
+        <div className="container-wide max-w-6xl pt-16">
           <div className="grid lg:grid-cols-[1.5fr_1fr] gap-12 lg:gap-20">
             <ContactForm />
-            <aside className="space-y-12">
+            <aside className="space-y-10">
               <div>
-                <h2 className="eyebrow mb-4">{t("contactPage.direct.title")}</h2>
-                <dl className="space-y-3 text-base">
+                <h2
+                  className="text-xs tracking-[0.2em] uppercase mb-4"
+                  style={{ color: "var(--color-accent-700)" }}
+                >
+                  Direct
+                </h2>
+                <dl className="space-y-4">
                   <div>
-                    <dt className="text-sm text-[var(--color-graphite)]">
-                      {t("contactPage.direct.phone")}
-                    </dt>
+                    <dt className="text-sm" style={{ color: "var(--color-graphite)" }}>Phone</dt>
                     <dd>
-                      {/* TODO: replace with realtor's cell phone */}
-                      <a
-                        href="tel:{{REALTOR_PHONE_E164}}"
-                        className="text-lg hover:text-[var(--color-accent-700)]"
-                      >
-                        {"{{REALTOR_PHONE}}"}
+                      <a href="tel:+16048089918" className="text-lg hover:text-[var(--color-accent-700)]">
+                        604-808-9918
                       </a>
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-sm text-[var(--color-graphite)]">
-                      {t("contactPage.direct.instagram")}
-                    </dt>
+                    <dt className="text-sm" style={{ color: "var(--color-graphite)" }}>Email</dt>
                     <dd>
-                      {/* TODO: replace with realtor's Instagram handle */}
+                      <a href="mailto:christine.yuen@gmail.com" className="text-lg hover:text-[var(--color-accent-700)]">
+                        christine.yuen@gmail.com
+                      </a>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-sm" style={{ color: "var(--color-graphite)" }}>Instagram</dt>
+                    <dd>
                       <a
-                        href="https://www.instagram.com/{{INSTAGRAM_HANDLE}}/"
+                        href="https://www.instagram.com/christine.604realtor/"
                         target="_blank"
                         rel="noreferrer"
                         className="text-lg hover:text-[var(--color-accent-700)]"
                       >
-                        {"@{{INSTAGRAM_HANDLE}}"}
+                        @christine.604realtor
                       </a>
                     </dd>
                   </div>
                 </dl>
               </div>
               <div>
-                <h2 className="eyebrow mb-4">{t("contactPage.office.title")}</h2>
+                <h2
+                  className="text-xs tracking-[0.2em] uppercase mb-4"
+                  style={{ color: "var(--color-accent-700)" }}
+                >
+                  Brokerage
+                </h2>
                 <div className="text-base space-y-1">
-                  <div className="font-medium">{t("contactPage.office.name")}</div>
-                  <address className="not-italic text-[var(--color-graphite)]">
-                    {t("contactPage.office.address")}
+                  <div className="font-medium">Grand Central Realty</div>
+                  <address className="not-italic" style={{ color: "var(--color-graphite)" }}>
+                    230-3700 North Fraser Way<br />
+                    Burnaby, BC V5J 5H4
                   </address>
-                  <div className="pt-2">
-                    <span className="text-sm text-[var(--color-graphite)]">
-                      {t("contactPage.office.phone")}:{" "}
-                    </span>
-                    {/* TODO: replace with brokerage phone */}
-                    <a
-                      href="tel:{{BROKERAGE_PHONE_E164}}"
-                      className="hover:text-[var(--color-accent-700)]"
-                    >
-                      {"{{BROKERAGE_PHONE}}"}
-                    </a>
-                  </div>
                 </div>
+              </div>
+              <div>
+                <p className="text-sm" style={{ color: "var(--color-graphite)" }}>
+                  {t("contact.privacy")}
+                </p>
               </div>
             </aside>
           </div>

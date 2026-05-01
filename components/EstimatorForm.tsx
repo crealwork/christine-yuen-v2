@@ -2,127 +2,58 @@
 
 import { useState } from "react";
 
-type FormData = {
-  propertyType: string;
-  neighborhood: string;
-  beds: string;
-  baths: string;
-  sqft: string;
-  yearBuilt: string;
-  condition: string;
-  reason: string;
-  name: string;
-  email: string;
-  phone: string;
-};
-
-type Status = "idle" | "calculating" | "result" | "error";
-
-// TODO: fill in PRICE_PER_SQFT with current local market $/sqft.
-// Source: recent MLS comparables or board reports.
-// Format: { "neighborhood-key": { condo: 0, townhome: 0, detached: 0 } }
-// Keys must match <option value="..."> below.
-const PRICE_PER_SQFT: Record<string, Record<string, number>> = {
-  // Example format — replace all with actual market data:
-  "neighborhood-1": { condo: 0, townhome: 0, detached: 0 },
-  "neighborhood-2": { condo: 0, townhome: 0, detached: 0 },
-  "neighborhood-3": { condo: 0, townhome: 0, detached: 0 },
-};
-
-const CONDITION_MULT: Record<string, number> = {
-  "move-in-ready": 1.0,
-  "some-updates": 0.95,
-  "major-reno": 0.85,
-};
-
-function fmt(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(2)}M`;
-  if (n >= 1000) return `$${Math.round(n / 1000)}K`;
-  return `$${n.toFixed(0)}`;
-}
-
-function computeEstimate(d: FormData): { low: number; high: number; mid: number } | null {
-  const base = PRICE_PER_SQFT[d.neighborhood]?.[d.propertyType];
-  const sqft = parseInt(d.sqft, 10);
-  if (!base || !sqft || sqft <= 0) return null;
-  const yearBuilt = parseInt(d.yearBuilt, 10) || 2000;
-  // TODO: update base year (2026) to current launch year for age discount accuracy
-  const ageDiscount = Math.max(-0.15, (yearBuilt - 2026) * 0.005); // -0.5% per year, max -15%
-  const condMult = CONDITION_MULT[d.condition] ?? 1.0;
-  const mid = base * sqft * (1 + ageDiscount) * condMult;
-  return { low: mid * 0.92, mid, high: mid * 1.08 };
-}
+type Status = "idle" | "submitting" | "sent" | "error";
 
 export default function EstimatorForm() {
   const [status, setStatus] = useState<Status>("idle");
-  const [estimate, setEstimate] = useState<{ low: number; mid: number; high: number } | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("calculating");
+    setStatus("submitting");
 
     const data = Object.fromEntries(
       new FormData(e.currentTarget).entries(),
-    ) as unknown as FormData;
-    const result = computeEstimate(data);
-
-    if (!result) {
-      setStatus("error");
-      return;
-    }
-
-    setEstimate(result);
+    );
 
     try {
-      await fetch("/api/estimate", {
+      const res = await fetch("/api/estimate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          estimate: { low: result.low, mid: result.mid, high: result.high },
-        }),
+        body: JSON.stringify(data),
       });
-      setStatus("result");
+      if (!res.ok) throw new Error("submit failed");
+      setStatus("sent");
     } catch {
-      // Local estimate still shown; realtor gets manual notification later.
-      setStatus("result");
+      setStatus("error");
     }
   }
 
-  if (status === "result" && estimate) {
+  if (status === "sent") {
     return (
       <div className="bg-[var(--color-canvas)] p-8 md:p-12 border-l-2 border-[var(--color-accent-500)]">
-        <p className="eyebrow mb-6">Estimated value</p>
+        <p className="eyebrow mb-6">Thanks — request received</p>
         <p
-          className="mb-2"
+          className="mb-6"
           style={{
             fontFamily: "var(--font-display)",
-            fontVariationSettings: '"opsz" 144',
-            fontSize: "56px",
-            lineHeight: "1",
-            letterSpacing: "-0.02em",
+            fontVariationSettings: '"opsz" 96',
+            fontSize: "40px",
+            lineHeight: "1.1",
+            letterSpacing: "-0.015em",
             color: "var(--color-ink)",
           }}
         >
-          {fmt(estimate.low)} – {fmt(estimate.high)}
+          Christine will email you within 24 hours.
         </p>
-        <p className="text-sm text-[var(--color-graphite)] mb-8">
-          Midpoint estimate: <strong>{fmt(estimate.mid)}</strong>. Range reflects ±8% uncertainty.
+        <p className="type-body-essay mb-4">
+          She'll review your details against current Richmond and Vancouver comparables — including recent activity that affects your property — and reply with a refined range.
         </p>
-        <div className="border-t border-[var(--color-line)] pt-6">
-          <p className="type-body-essay mb-4">
-            {/* TODO: replace realtor name with actual first name */}
-            This is an algorithmic estimate from neighborhood comparables. Your realtor will personally
-            review your details and reach out within 24 hours with a refined range — including any
-            recent market activity that affects your property.
-          </p>
-          <p
-            className="text-base italic"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-accent-700)" }}
-          >
-            — Check your email shortly.
-          </p>
-        </div>
+        <p
+          className="text-base italic"
+          style={{ fontFamily: "var(--font-display)", color: "var(--color-accent-700)" }}
+        >
+          — Check your inbox shortly.
+        </p>
       </div>
     );
   }
@@ -133,12 +64,7 @@ export default function EstimatorForm() {
         <legend className="eyebrow mb-4">About the property</legend>
 
         <Field label="Property type" required>
-          <select
-            name="propertyType"
-            required
-            defaultValue=""
-            className="field-input"
-          >
+          <select name="propertyType" required defaultValue="" className="field-input">
             <option value="" disabled>Choose…</option>
             <option value="condo">Condo / Apartment</option>
             <option value="townhome">Townhome</option>
@@ -147,18 +73,28 @@ export default function EstimatorForm() {
         </Field>
 
         <Field label="Neighborhood" required>
-          <select
-            name="neighborhood"
-            required
-            defaultValue=""
-            className="field-input"
-          >
+          <select name="neighborhood" required defaultValue="" className="field-input">
             <option value="" disabled>Choose…</option>
-            {/* TODO: replace with actual neighborhood options matching PRICE_PER_SQFT keys above */}
-            <option value="neighborhood-1">{"{{NEIGHBORHOOD_1_LABEL}}"}</option>
-            <option value="neighborhood-2">{"{{NEIGHBORHOOD_2_LABEL}}"}</option>
-            <option value="neighborhood-3">{"{{NEIGHBORHOOD_3_LABEL}}"}</option>
+            <option value="vancouver-west">Vancouver — West Side</option>
+            <option value="vancouver-east">Vancouver — East Side</option>
+            <option value="burnaby-brentwood">Burnaby — Brentwood</option>
+            <option value="burnaby-metrotown">Burnaby — Metrotown</option>
+            <option value="burnaby-other">Burnaby — other</option>
+            <option value="richmond">Richmond</option>
+            <option value="north-shore">North / West Vancouver</option>
+            <option value="tri-cities">Tri-Cities (Coquitlam / PoCo / Port Moody)</option>
+            <option value="new-westminster">New Westminster</option>
+            <option value="surrey-white-rock">Surrey / White Rock</option>
           </select>
+        </Field>
+
+        <Field label="Address (optional)">
+          <input
+            name="address"
+            type="text"
+            placeholder="e.g. 123 - 4567 Brentwood Blvd, Burnaby"
+            className="field-input"
+          />
         </Field>
 
         <div className="grid sm:grid-cols-3 gap-6">
@@ -178,12 +114,7 @@ export default function EstimatorForm() {
             <input name="yearBuilt" type="number" min={1900} max={2030} placeholder="2010" className="field-input" />
           </Field>
           <Field label="Condition" required>
-            <select
-              name="condition"
-              required
-              defaultValue=""
-              className="field-input"
-            >
+            <select name="condition" required defaultValue="" className="field-input">
               <option value="" disabled>Choose…</option>
               <option value="move-in-ready">Move-in ready</option>
               <option value="some-updates">Some updates needed</option>
@@ -193,11 +124,7 @@ export default function EstimatorForm() {
         </div>
 
         <Field label="Why are you checking?">
-          <select
-            name="reason"
-            defaultValue="curious"
-            className="field-input"
-          >
+          <select name="reason" defaultValue="curious" className="field-input">
             <option value="curious">Just curious</option>
             <option value="selling">Considering selling</option>
             <option value="buying-similar">Buying something similar</option>
@@ -208,7 +135,7 @@ export default function EstimatorForm() {
       </fieldset>
 
       <fieldset className="space-y-6 pt-8 border-t border-[var(--color-line)]">
-        <legend className="eyebrow mb-4">Where to send the result</legend>
+        <legend className="eyebrow mb-4">Where to send the estimate</legend>
         <div className="grid sm:grid-cols-2 gap-6">
           <Field label="Your name" required>
             <input name="name" type="text" required className="field-input" />
@@ -225,18 +152,18 @@ export default function EstimatorForm() {
       <div className="pt-4">
         <button
           type="submit"
-          disabled={status === "calculating"}
+          disabled={status === "submitting"}
           className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {status === "calculating" ? "Calculating…" : "Get my estimate"}
+          {status === "submitting" ? "Sending…" : "Request my estimate"}
         </button>
         {status === "error" && (
           <p className="mt-4 text-red-700">
-            Couldn't calculate — please make sure you've selected a neighborhood, property type, and entered square footage.
+            Something went wrong. Please call or text Christine at 604-808-9918.
           </p>
         )}
         <p className="mt-4 text-xs text-[var(--color-graphite)] max-w-md">
-          Your details go to your realtor directly. No newsletter, no third-party data sales.
+          Your details go to Christine directly. No newsletter, no third-party data sales.
         </p>
       </div>
     </form>

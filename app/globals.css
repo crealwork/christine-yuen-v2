@@ -1,39 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0a0a0a;
-  --color-white: #ffffff;
-  --color-accent: #d7cee5;
-  --color-accent-50: #f3f0f7;
-  --color-accent-100: #ebe7f2;
-  --color-accent-300: #d7cee5;
-  --color-accent-500: #b8a9cc;
-  --color-accent-700: #7c6a94;
-  --color-charcoal: #2a2a2a;
-  --color-graphite: #6b6b6b;
-  --color-line: #e5e5e5;
-  --color-canvas: #fafafa;
+  --color-canvas: #FFFCF7;
+  --color-surface: #FFFFFF;
+  --color-accent: #C9A661;
+  --color-accent-dark: #A8853F;
+  --color-accent-50: #FAF4E6;
+  --color-accent-100: #F0E2C7;
+  --color-accent-300: #D9BC83;
+  --color-accent-500: #C9A661;
+  --color-accent-700: #A8853F;
+  --color-ink: #2A2521;
+  --color-graphite: #6B6660;
+  --color-line: #E8DFD0;
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-korean: "Pretendard", "Inter", sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --breakpoint-xs: 480px;
 }
 
 :root {
-  --color-ink: #0a0a0a;
-  --color-white: #ffffff;
-  --color-accent: #d7cee5;
-  --color-accent-50: #f3f0f7;
-  --color-accent-100: #ebe7f2;
-  --color-accent-300: #d7cee5;
-  --color-accent-500: #b8a9cc;
-  --color-accent-700: #7c6a94;
-  --color-charcoal: #2a2a2a;
-  --color-graphite: #6b6b6b;
-  --color-line: #e5e5e5;
-  --color-canvas: #fafafa;
+  --color-canvas: #FFFCF7;
+  --color-surface: #FFFFFF;
+  --color-accent: #C9A661;
+  --color-accent-dark: #A8853F;
+  --color-accent-50: #FAF4E6;
+  --color-accent-100: #F0E2C7;
+  --color-accent-300: #D9BC83;
+  --color-accent-500: #C9A661;
+  --color-accent-700: #A8853F;
+  --color-ink: #2A2521;
+  --color-graphite: #6B6660;
+  --color-line: #E8DFD0;
+  --font-sans-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-display-fallback: Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -42,35 +43,24 @@
 
 html,
 body {
-  background: var(--color-white);
-  color: var(--color-charcoal);
-  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans), var(--font-sans-fallback);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html[lang="ko"] body {
-  font-family: var(--font-korean);
+h1, h2, h3, h4 {
+  font-family: var(--font-sans), var(--font-sans-fallback);
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  color: var(--color-ink);
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-}
-
-html[lang="ko"] h1,
-html[lang="ko"] h2,
-html[lang="ko"] h3 {
-  font-family: var(--font-display), var(--font-korean);
-  font-weight: 500;
+.font-display {
+  font-family: var(--font-display), var(--font-display-fallback);
+  font-style: italic;
 }
 
 ::selection {

@@ -1,5 +1,5 @@
 {
-  "name": "realtor-site-starter",
+  "name": "christine-yuen-v2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,12 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "gen-images": "tsx scripts/generate-images.ts"
+    "test:watch": "vitest"
   },
   "dependencies": {
     "next": "^16.2.4",
-    "next-intl": "^4.9.1",
+    "next-intl": "4.9.1",
     "openai": "^6.34.0",
     "react": "19.0.0",
     "react-dom": "19.0.0"
