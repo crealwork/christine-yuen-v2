@@ -21,13 +21,15 @@ export async function generateMetadata({
     title: t("siteTitle"),
     description: t("siteDescription"),
     metadataBase: new URL(BASE_URL),
+    manifest: "/manifest.json",
     icons: {
       icon: [
+        { url: "/logo/favicon-16.png", sizes: "16x16", type: "image/png" },
         { url: "/logo/favicon-32.png", sizes: "32x32", type: "image/png" },
         { url: "/logo/favicon-192.png", sizes: "192x192", type: "image/png" },
       ],
       shortcut: "/logo/favicon.ico",
-      apple: "/logo/favicon-192.png",
+      apple: [{ url: "/logo/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
     },
     openGraph: {
       title: t("siteTitle"),
@@ -38,7 +40,7 @@ export async function generateMetadata({
       url: `${BASE_URL}/${locale}`,
       images: [
         {
-          url: "/images/portrait/christine-portrait-cream.jpg",
+          url: "/og/og-default.jpg",
           width: 1200,
           height: 630,
           alt: "Christine Yuen, REALTOR® — Grand Central Realty",
@@ -49,7 +51,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: t("siteTitle"),
       description: t("siteDescription"),
-      images: ["/images/portrait/christine-portrait-cream.jpg"],
+      images: ["/og/og-default.jpg"],
     },
     alternates: {
       canonical: `${BASE_URL}/${locale}`,

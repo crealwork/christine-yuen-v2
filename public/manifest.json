@@ -1,0 +1,27 @@
+{
+  "name": "Christine Yuen, REALTOR",
+  "short_name": "Christine Yuen",
+  "description": "Christine Yuen, REALTOR with Grand Central Realty. Richmond, Vancouver East and West.",
+  "start_url": "/en",
+  "display": "standalone",
+  "background_color": "#FFFCF7",
+  "theme_color": "#C9A661",
+  "icons": [
+    {
+      "src": "/logo/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

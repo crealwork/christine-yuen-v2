@@ -35,7 +35,27 @@
   "testimonials": {
     "eyebrow": "WHAT CLIENTS SAY",
     "heading": "Words from people I've worked with.",
-    "emptyState": "Still gathering quotes from recent clients — 2026 launch year. Reach out and you'll hear from someone I've helped."
+    "_draft_note": "PLACEHOLDER COPY — replace these three quotes with real client testimonials before public launch.",
+    "items": [
+      {
+        "quote": "Christine never rushed us. She translated every clause for my parents in Cantonese, asked twice if we were sure, and walked us back from a unit that would have stretched us. The next one we wrote on, we got at asking — no bidding war, no regrets.",
+        "attribution": "M. Wong",
+        "role": "First-time buyer, Richmond",
+        "year": "2025"
+      },
+      {
+        "quote": "We were moving from Hong Kong with two young kids and not much English yet. Christine handled the immigration paperwork and the home search at the same time. The school catchment notes she sent us before we even saw the place are still pinned on our fridge.",
+        "attribution": "L. Chen",
+        "role": "Newcomer family, Vancouver West",
+        "year": "2025"
+      },
+      {
+        "quote": "I've worked with three realtors in Vancouver. Christine is the only one who told me when not to buy. She pulled the comps, showed me the math, and said wait six months. She was right. We closed in the spring at thirty thousand under what I'd offered in the fall.",
+        "attribution": "D. Lim",
+        "role": "Investor, Vancouver East",
+        "year": "2025"
+      }
+    ]
   },
   "currently": {
     "eyebrow": "CURRENTLY",

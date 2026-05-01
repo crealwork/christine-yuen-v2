@@ -26,13 +26,13 @@ export async function generateMetadata({
       description: t("siteDescription"),
       url: `${BASE_URL}/${locale}`,
       type: "website",
-      images: [{ url: "/logo/og-default.jpg", width: 1200, height: 630, alt: "Christine Yuen, REALTOR®" }],
+      images: [{ url: "/og/og-default.jpg", width: 1200, height: 630, alt: "Christine Yuen, REALTOR®" }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("siteTitle"),
       description: t("siteDescription"),
-      images: ["/logo/og-default.jpg"],
+      images: ["/og/og-default.jpg"],
     },
   };
 }

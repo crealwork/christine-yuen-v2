@@ -1,7 +1,10 @@
 import { useTranslations } from "next-intl";
 
+type Item = { quote: string; attribution: string; role: string; year: string };
+
 export default function Testimonials() {
   const t = useTranslations("testimonials");
+  const items = t.raw("items") as Item[];
 
   return (
     <section className="bg-[var(--color-canvas)]">
@@ -12,16 +15,24 @@ export default function Testimonials() {
         <h2 className="text-[36px] md:text-[48px] font-semibold tracking-tight text-[var(--color-ink)] mb-12 max-w-[640px]">
           {t("heading")}
         </h2>
+        {/* PLACEHOLDER COPY — replace items in messages/en.json with real client testimonials before public launch. */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {[1, 2, 3].map((i) => (
+          {items.map((item, i) => (
             <article
               key={i}
-              className="bg-[var(--color-accent-50)] border border-[var(--color-line)] rounded-[12px] p-8"
+              className="bg-[var(--color-accent-50)] border border-[var(--color-line)] rounded-[12px] p-8 flex flex-col"
             >
-              <p className="font-display italic text-[18px] leading-[1.5] text-[var(--color-ink)] mb-6">
-                {t("emptyState")}
+              <p className="font-display italic text-[18px] leading-[1.5] text-[var(--color-ink)] mb-6 flex-1">
+                &ldquo;{item.quote}&rdquo;
               </p>
-              <p className="text-[13px] text-[var(--color-graphite)]">— Coming soon</p>
+              <div className="border-t border-[var(--color-line)] pt-4">
+                <p className="text-[14px] font-semibold text-[var(--color-ink)]">
+                  {item.attribution}
+                </p>
+                <p className="text-[13px] text-[var(--color-graphite)]">
+                  {item.role} · {item.year}
+                </p>
+              </div>
             </article>
           ))}
         </div>
