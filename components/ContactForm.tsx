@@ -11,21 +11,16 @@ export default function ContactForm() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("submit failed");
-      setStatus("success");
-      e.currentTarget.reset();
-    } catch {
-      setStatus("error");
-    }
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    // Optimistic UI: show success immediately. Webhook fires in background.
+    setStatus("success");
+    form.reset();
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).catch((err) => console.error("contact submit failed:", err));
   }
 
   return (

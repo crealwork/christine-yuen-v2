@@ -9,23 +9,14 @@ export default function EstimatorForm() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
-
-    const data = Object.fromEntries(
-      new FormData(e.currentTarget).entries(),
-    );
-
-    try {
-      const res = await fetch("/api/estimate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("submit failed");
-      setStatus("sent");
-    } catch {
-      setStatus("error");
-    }
+    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    // Optimistic UI: show success immediately. Webhook fires in background.
+    setStatus("sent");
+    fetch("/api/estimate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).catch((err) => console.error("estimate submit failed:", err));
   }
 
   if (status === "sent") {
@@ -140,8 +131,8 @@ export default function EstimatorForm() {
           <Field label="Your name" required>
             <input name="name" type="text" required className="field-input" />
           </Field>
-          <Field label="Phone (optional)">
-            <input name="phone" type="tel" className="field-input" />
+          <Field label="Phone" required>
+            <input name="phone" type="tel" required className="field-input" />
           </Field>
         </div>
         <Field label="Email" required>
